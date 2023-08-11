@@ -1,8 +1,16 @@
-
 import { useState } from "react";
-const ChatMessage = ({message}) => {
+import { useDispatch } from "react-redux";
+import { removeMessage } from "../slices/chatSlice";
+const ChatMessage = ({message, setMessages, messages}) => {
+  const dispatch = useDispatch();
   //Every message is mauntain ing their own state
   const[count, setCount] = useState(0);
+  const handleMsgDelete = ()=>{
+    const arr = messages?.filter((msg, i)=>{
+        return msg.msg != message.msg;
+    })
+    dispatch(removeMessage(arr));
+  }
   return (
     <div className="flex  items-start gap-3 my-4">
       <img
@@ -22,7 +30,9 @@ const ChatMessage = ({message}) => {
           <div onClick={()=>setCount(count+1)} className="absolute right-0 px-1.5 rounded-md space-x-1 cursor-pointer bg-red-300 my-1">
             {count>0 && <span>{count}</span>}
             <i className={`fa-regular fa-heart ${count>0? 'text-red-600': 'text-black'}`}></i>
+            
           </div>
+          <button onClick={handleMsgDelete} className="bg-red-300 ">Dele</button>
         </div>
       </div>
     </div>

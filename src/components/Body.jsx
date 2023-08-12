@@ -1,6 +1,6 @@
 import ChatBody from "./ChatBody";
 import InputBox from "./InputBox";
-import Alert from "./Alert";
+
 const Body = () => {
   return (
     <div className="flex justify-center">

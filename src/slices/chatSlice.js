@@ -9,9 +9,9 @@ const chatSlice = createSlice({
     addMessge: (state, action) => {
       state.message.unshift(action.payload);
     },
-    removeMessage:(state, action) =>{
+    removeMessage: (state, action) => {
       state.message = action.payload;
-    }
+    },
   },
 });
 export const { addMessge, removeMessage } = chatSlice.actions;

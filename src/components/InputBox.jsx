@@ -5,10 +5,10 @@ import { user_list } from "../helper/const";
 const InputBox = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
-  const[isBtnDisabled, setIsBtnDisabled] = useState(true);
-  useEffect(()=>{
-    message? setIsBtnDisabled(false):setIsBtnDisabled(true);
-  }, [message])
+  const [isBtnDisabled, setIsBtnDisabled] = useState(true);
+  useEffect(() => {
+    message ? setIsBtnDisabled(false) : setIsBtnDisabled(true);
+  }, [message]);
   const handleSubmit = (e) => {
     e.preventDefault();
     const date = new Date();
@@ -37,7 +37,9 @@ const InputBox = () => {
         />
         <button
           type="submit"
-          className={`bg-green-300 py-2 px-4 mx-4 rounded-lg ${isBtnDisabled? "cursor-no-drop": "cursor-pointer"}`}
+          className={`bg-green-300 py-2 px-4 mx-4 rounded-lg ${
+            isBtnDisabled ? "cursor-no-drop" : "cursor-pointer"
+          }`}
           disabled={isBtnDisabled}
         >
           send

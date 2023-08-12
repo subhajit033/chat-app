@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeMessage } from "../slices/chatSlice";
-const ChatMessage = ({message, messages}) => {
+const ChatMessage = ({ message, messages }) => {
   const dispatch = useDispatch();
   //Every message is mauntain ing their own state
-  const[count, setCount] = useState(0);
-  const handleMsgDelete = ()=>{
-    const arr = messages?.filter((msg, i)=>{
-        return msg.msg != message.msg;
-    })
+  const [count, setCount] = useState(0);
+  const handleMsgDelete = () => {
+    const arr = messages?.filter((msg, i) => {
+      return msg.msg != message.msg;
+    });
     dispatch(removeMessage(arr));
-  }
+  };
   return (
     <div className="flex  items-start gap-3 my-4">
       <img
@@ -27,12 +27,22 @@ const ChatMessage = ({message, messages}) => {
           <p className="min-w-fit max-w-[36rem] border px-2 py-2 bg-white rounded-tr-xl rounded-br-xl rounded-bl-xl">
             {message.msg}
           </p>
-          <div onClick={()=>setCount(count+1)} className="absolute left-0 px-1.5 rounded-md space-x-1 cursor-pointer bg-red-300 my-1">
-            {count>0 && <span>{count}</span>}
-            <i className={`fa-regular fa-heart ${count>0? 'text-red-600': 'text-black'}`}></i>            
+          <div
+            onClick={() => setCount(count + 1)}
+            className="absolute left-0 px-1.5 rounded-md space-x-1 cursor-pointer bg-red-300 my-1"
+          >
+            {count > 0 && <span>{count}</span>}
+            <i
+              className={`fa-regular fa-heart ${
+                count > 0 ? "text-red-600" : "text-black"
+              }`}
+            ></i>
           </div>
           {/* <button onClick={handleMsgDelete} className="bg-red-300 absolute right-0">Dele</button> */}
-          <i onClick={handleMsgDelete} className="fa-solid fa-trash absolute right-0 text-red-600 my-1.5 cursor-pointer"></i>
+          <i
+            onClick={handleMsgDelete}
+            className="fa-solid fa-trash absolute right-0 text-red-600 my-1.5 cursor-pointer"
+          ></i>
         </div>
       </div>
     </div>
